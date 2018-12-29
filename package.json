@@ -1,0 +1,41 @@
+{
+  "name": "cordx56-static-web-template",
+  "version": "0.1.0",
+  "description": "cordx56's web page build template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "rm -rf ./dest && npm run build && node ./scripts/deploy.js",
+    "start": "npm run build && `npm bin`/npm-run-all -p watch:all server:start",
+    "server:start": "`npm bin`/browser-sync start -s ./dest/ --port 8081 -f ./dest/**",
+    "build": "npm run build:all",
+    "build:all": "`npm bin`/npm-run-all -s build:pug build:scss copy-files",
+    "build:pug": "`npm bin`/pug -P -o ./dest/ ./src/",
+    "build:scss": "`npm bin`/node-sass -o ./dest/ -r ./src/",
+    "watch": "npm run watch:all",
+    "watch:all": "`npm bin`/npm-run-all -p watch:pug watch:scss watch:files",
+    "watch:pug": "`npm bin`/chokidar './src/**/*.pug' -c 'npm run build:pug'",
+    "watch:scss": "`npm bin`/chokidar './src/**/*.scss' './src/**/*.sass' -c 'npm run build:scss'",
+    "watch:files": "`npm bin`/chokidar './src/**/*' -c 'npm run copy-files'",
+    "copy-files": "mkdir -p ./dest && cd ./src && find ./ -type f | grep -iEv '\\.(pug|slim|scss)$' | xargs -r cp --parents -u -t ../dest ; cd ../"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cordx56/cordx56-static-web-template.git"
+  },
+  "author": "cordx56 <cordx56@cordx.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cordx56/cordx56-static-web-template/issues"
+  },
+  "homepage": "https://github.com/cordx56/cordx56-static-web-template#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "chokidar-cli": "^1.2.1",
+    "gh-pages": "^2.0.1",
+    "jstransformer-markdown-it": "^2.1.0",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "pug-cli": "^1.0.0-alpha6"
+  }
+}

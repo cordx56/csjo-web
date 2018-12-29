@@ -1,0 +1,219 @@
+/*
+ * index.css
+ *  Copyright (C) 2018 CSJO All rights reserved.
+ */
+
+$max-width: 1400px;
+$min-width: 900px;
+$sidebar-width: 240px;
+
+@import "include.scss";
+
+body {
+    margin: 0;
+    font-family: "Noto Sans Japanese", "Noto Sans", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.background {
+    .background-dots {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background: url("whitedot.png") repeat;
+        z-index: -1;
+    }
+    .media {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: -2;
+        background-size: cover;
+        background-position: center;
+    }
+    video {
+        /*top: 0;
+        left: 0;*/
+        top: 50%;
+        left: 50%;
+        width: auto;
+        height: auto;
+        min-width: 100%;
+        min-height: 100%;
+        position: fixed;
+        z-index: -2;
+        
+        transform: translate(-50%, -50%);
+    }
+}
+
+.header {
+    width: 100%;
+    color: #fff;
+    text-shadow: 0 0 6px, #fff;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1) 90%, rgba(0, 0, 0, 0));
+    
+    .header-wrapper {
+        width: 100%;
+        max-width: $max-width;
+        position: relative;
+        margin: auto;
+        padding: 10px;
+        
+        .title {
+            font-size: 2.8em;
+            text-shadow: 0 0 6px #000;
+            font-family: Montserrat;
+            
+            span.fl {
+                font-size: 1.2em;
+            }
+        }
+    }
+}
+
+.wrapper {
+    width: 100%;
+    max-width: $max-width;
+    position: relative;
+    margin: 20px auto auto auto;
+    padding: 10px;
+    overflow: hidden;
+    
+    .sidebar {
+        width: $sidebar-width;
+        left: 10px;
+        position: absolute;
+        border: 1px solid #000;
+        background-color: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        @include prefix(transition, left .6s 0s cubic-bezier(0.19, 1, 0.22, 1));
+        
+        a {
+            display: block;
+            padding: 10px 5px 10px 20px;
+            border-left: 0px solid #f33;
+            color: #fff;
+            font-size: 1.4em;
+            text-decoration: none;
+            @include prefix(transition, all .6s 0s cubic-bezier(0.19, 1, 0.22, 1));
+            
+            &:hover {
+                border-left: 3px solid #f33;
+                padding-left: 17px;
+            }
+        }
+    }
+    
+    .contents {
+        margin-left: $sidebar-width + 20px;
+        overflow: hidden;
+        
+        .section {
+            width: 49%;
+            float: left;
+            margin-right: 1%;
+            margin-bottom: 10px;
+            padding: 10px;
+            
+            border: 1px solid #fff;
+            background-color: rgba(224, 224, 224, 0.8);
+            
+            /*height: 20em;
+            overflow: hidden;*/
+            @include prefix(transition, all .6s 0s cubic-bezier(0.19, 1, 0.22, 1));
+            
+            
+            &.wide {
+                width: 99%;
+                height: auto;
+                //float: none;
+                margin-right: 0;
+            }
+            &.transparent {
+                background: none;
+                border: none;
+            }
+            img {
+                max-width: 80%;
+                min-width: 50%;
+            }
+            h2 {
+                margin-left: 10px;
+            }
+            p {
+                margin-left: 20px;
+            }
+            table {
+                border-collapse: collapse;
+                th, td {
+                    padding: 5px;
+                    border: 1px solid #333;
+                }
+            }
+        }
+    }
+    
+    &.nosidebar {
+        .sidebar {
+            display: none;
+        }
+        .contents {
+            margin-left: 0;
+        }
+    }
+}
+
+.footer {
+    color: #fff;
+    //background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0));
+    text-align: center;
+    text-shadow: 0 0 6px #000;
+}
+
+@media (max-width: $min-width) {
+    .wrapper {
+        .sidebar {
+            left: -$sidebar-width;
+            top: 80px;
+            position: fixed;
+            
+            &::before {
+                content: "\f0c9";
+                display: block;
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 80px;
+                height: 80px;
+                line-height: 80px;
+                border-radius: 0 0 8px 0;
+                z-index: -1;
+                background-color: rgba(0, 0, 0, 0.75);
+                font-family: Fontawesome;
+                font-size: 72px;
+                text-align: center;
+            }
+            
+            &:hover {
+                left: 0;
+            }
+        }
+        
+        .contents {
+            margin-left: 0;
+            .section {
+                width: 100%;
+                float: none;
+            }
+        }
+    }
+}

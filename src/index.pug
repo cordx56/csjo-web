@@ -1,0 +1,14 @@
+doctype xhtml
+html(xmlns="http://www.w3.org/1999/xhtml")
+  head
+    include head.pug
+  body
+    include header.pug
+    .wrapper
+      include sidebar.pug
+      .contents
+        .section
+          include:markdown-it(html=true,xhtmlOut=true) welcome.md
+        .section
+          include:markdown-it(html=true,xhtmlOut=true) news.md
+  include foot.pug
