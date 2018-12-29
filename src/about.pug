@@ -1,11 +1,11 @@
 doctype xhtml
 html(xmlns="http://www.w3.org/1999/xhtml")
   head
-    include head.pug
+    include pugtmpl/head.pug
   body
-    include header.pug
+    include pugtmpl/header.pug
     .wrapper
-      include sidebar.pug
+      include pugtmpl/sidebar.pug
       .contents
         .section.wide
           include:markdown-it(html=true,xhtmlOut=true) articles/about.md
@@ -13,4 +13,4 @@ html(xmlns="http://www.w3.org/1999/xhtml")
           include:markdown-it(html=true,xhtmlOut=true) articles/activity.md
         .section.wide
           include:markdown-it(html=true,xhtmlOut=true) articles/faq.md
-  include foot.pug
+  include pugtmpl/foot.pug
