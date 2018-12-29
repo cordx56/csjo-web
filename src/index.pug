@@ -8,13 +8,13 @@ html(xmlns="http://www.w3.org/1999/xhtml")
       include sidebar.pug
       .contents
         .section
-          include:markdown-it(html=true,xhtmlOut=true) welcome.md
+          include:markdown-it(html=true,xhtmlOut=true) articles/welcome.md
         .section
-          include:markdown-it(html=true,xhtmlOut=true) contact.md
+          include:markdown-it(html=true,xhtmlOut=true) articles/contact.md
         .section
-          include:markdown-it(html=true,xhtmlOut=true) news.md
+          include:markdown-it(html=true,xhtmlOut=true) articles/news.md
         .section
-          include:markdown-it(html=true,xhtmlOut=true) about.md
+          include:markdown-it(html=true,xhtmlOut=true) articles/about.md
         .section
-          include:markdown-it(html=true,xhtmlOut=true) schedule.md
+          include:markdown-it(html=true,xhtmlOut=true) articles/schedule.md
   include foot.pug
