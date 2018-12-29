@@ -186,6 +186,13 @@ body {
 }
 
 @media (max-width: $min-width) {
+    .header{
+        .header-wrapper {
+            .title {
+                font-size: 2.0em;
+            }
+        }
+    }
     .wrapper {
         .sidebar {
             left: -$sidebar-width;
