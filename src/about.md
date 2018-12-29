@@ -1,4 +1,4 @@
-# College Society Jazz Orchestra(CSJO)とは？
+# [College Society Jazz Orchestra(CSJO)とは？](./about.html)
 CSJOとは、芝浦工業大学 文化会 軽音楽部の別称です。
 
 私達のバンドは"ビッグバンドジャズ"という構成のバンドです。
